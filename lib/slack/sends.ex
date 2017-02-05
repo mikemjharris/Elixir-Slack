@@ -38,6 +38,18 @@ defmodule Slack.Sends do
       |> JSX.encode!
       |> send_raw(slack)
   end
+  
+  def send_message(text, channel, slack, thread_ts) do
+    %{
+      type: "message",
+      text: text,
+      channel: channel,
+      thread_ts: thread_ts
+    }
+      |> JSX.encode!
+      |> send_raw(slack)
+  end
+
 
   @doc """
   Notifies Slack that the current user is typing in `channel`.
